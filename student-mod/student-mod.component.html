@@ -1,0 +1,143 @@
+<div>
+    <h1 class="myH1">STUDENT MANAGEMENT SYSTEM</h1>
+</div>
+<div class="container">
+    <h2 class="myH2">student detail Update module</h2>
+    <div class="form-div">
+        <form [FormGroup]="myForm" (ngSubmit)="mySubmit()">
+            <table class="myTable">
+                <tr>
+                    <div>
+                        <td><label for="studentName">student name</label></td>
+                        <td><input 
+                                placeholder="Enter student name"
+                                name="studentName"
+                                id="studentName"
+                                formControlName="name"
+                                [(ngModel)]="student.studentName">
+                                <div *ngIf="name!.invalid && (name!.dirty || name!.touched)">
+                                    Name is required
+                                </div>     
+                        </td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td><label>Date of admission:&nbsp;</label>
+                        <td class="myTd" disabled="true">{{date | date: 'mediumDate'}}</td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td><label>New date</label>
+                        <td><input type="date"
+                                name="studentDoa"
+                                id="studentDoa"
+                                formControlName="doa"
+                                [(ngModel)]="student.dateOfAdmission">
+                                <div *ngIf="doa!.invalid && (doa!.dirty || doa!.touched)">
+                                    Date of admission is required
+                                </div>
+                        </td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td><label for="Physics">physics</label></td>
+                        <td><input type="text"
+                                name="Physics"
+                                id="Physics"
+                                formControlName="physics"
+                                [(ngModel)]="student.Physics">
+                                <div *ngIf="physics!.invalid && (physics!.dirty || physics!.touched)">
+                                    Score of Physics is required
+                                </div>
+                                <div *ngIf="physics!.errors!.min">
+                                    Minimum Score is Rs 0
+                                </div> 
+                                <div *ngIf="physics!.errors!.max">
+                                    Maximum Score is Rs 100
+                                </div> 
+                        </td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td><label for="Chemistry">chemistry</label></td>
+                        <td><input type="text"
+                                name="Chemistry"
+                                id="Chemistry"
+                                formControlName="chemistry"
+                                [(ngModel)]="student.Chemistry">
+                                <div *ngIf="chemistry!.invalid && (chemistry!.dirty || chemistry!.touched)">
+                                    Score of Chemistry is required
+                                </div>
+                                <div *ngIf="chemistry!.errors!.min">
+                                    Minimum Score is Rs 0
+                                </div> 
+                                <div *ngIf="chemistry!.errors!.max">
+                                    Maximum Score is Rs 100
+                                </div> 
+                        </td>
+                    </div>
+                </tr>
+                <tr>
+                    <div>
+                        <td><label for="Biology">biology</label></td>
+                        <td><input type="text"
+                                name="Biology"
+                                id="Biology"
+                                formControlName="biology"
+                                [(ngModel)]="student.Biology">
+                                <div *ngIf="biology!.invalid && (biology!.dirty || biology!.touched)">
+                                    Score of Biology is required
+                                </div>
+                                <div *ngIf="biology!.errors!.min">
+                                    Minimum Score is Rs 0
+                                </div> 
+                                <div *ngIf="biology!.errors!.max">
+                                    Maximum Score is Rs 100
+                                </div> 
+                        </td>
+                    </div>
+                </tr>
+   
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                    <div>
+                        <td>
+                            <label for="confirm">Confirm</label>
+                        </td>
+                        <td>
+                            <input type="checkbox"
+                            id="confirm"
+                            name="confirm"
+                            required
+                            (click)="toggleConfirmed()"
+                            [(ngModel)]="isConfirmed">
+                        </td>
+                   </div>    
+                </tr>
+                <br>
+                <tr>
+                    <td>
+                        <div *ngIf="isConfirmed">
+                            <button mat-raised-button color="primary" type="submit">Submit</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button mat-raised-button color="warn" type="reset" (click)="myReset()">Clear</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div class="myMain">
+            <a mat-stroked-button routerLink="/students/home">Home</a>
+        </div>
+    </div>
+    <div *ngIf="msg">
+        {{msg}}
+    </div>
+</div>
+

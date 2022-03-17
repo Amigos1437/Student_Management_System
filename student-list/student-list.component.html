@@ -1,0 +1,31 @@
+<div>
+    <h1 class="myH1">STUDENT MANAGEMENT SYSTEM</h1>
+</div>
+<div class="myCenter">
+    <table class="Students">
+        <tr>
+            <th>Student id</th>
+            <th>Student name</th>
+            <th>Date of admission</th>
+            <th>Physics</th>
+            <th>Chemistry</th>
+            <th>Biology</th>
+            <th>Remove a Student</th>
+            <th>Update a Student</th>
+        </tr>
+        <tr *ngFor="let student of Students; index as i;">       
+            <td>{{student.StudentId}}</td>
+            <td>{{student.StudentName}}</td>  
+            <td>{{Student.dateOfAdmission | date: 'mediumDate'}}</td>
+            <td>{{Student.physics}}</td>
+            <td>{{Student.chemistry}}</td>
+            <td>{{Student.biology}}</td>
+            <td style="text-align:center"><button mat-raised-button color="warn" (click)="delStudent($event, i)">Delete</button></td>
+            <td style="text-align:center;"><a mat-stroked-button color="black" routerLink="/Students/update/{{Student.StudentId}}">Update</a></td>
+        </tr>
+    </table>
+    <br><br>
+    <div class="myMain">
+        <a mat-stroked-button routerLink="/Students/home">Home</a>
+    </div>
+</div>
